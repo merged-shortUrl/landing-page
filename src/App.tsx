@@ -1,20 +1,20 @@
 import "./App.css";
-import CTA from "./CTA";
-import CTA2 from "./CTA2";
-import Example from "./Example";
 import FAQ from "./FAQ";
 import Features from "./Feature";
 import Footer from "./Footer";
+import HeroSection from "./HeroSection";
+import ProductHighlight from "./ProductHighlight";
+import Subscribe from "./Subscribe";
 import Why from "./Why";
 
 function App() {
   return (
     <>
-      <Example />
+      <HeroSection />
       <Features />
       <Why />
-      <CTA />
-      <CTA2 />
+      <ProductHighlight />
+      <Subscribe />
       <FAQ />
       <Footer />
     </>
