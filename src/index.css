@@ -96,3 +96,29 @@ svg#freepik_stories-conversion-rate-optimization.animated #freepik--Character--i
     opacity: 1;
   }
 }
+
+
+.checkSvg {
+  height: 20px;
+  width: 20px;
+  margin: 3.5px 1.5rem;
+
+}
+
+.checkmark {
+
+  stroke: white;
+  stroke-dashoffset: 745.74853515625;
+  stroke-dasharray: 745.74853515625;
+  animation: dash 2s ease-out forwards 2s;
+}
+
+@keyframes dash {
+  0% {
+    stroke-dashoffset: 745.74853515625;
+  }
+
+  100% {
+    stroke-dashoffset: 0;
+  }
+}

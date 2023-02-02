@@ -1,12 +1,13 @@
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import emailjs from "@emailjs/browser";
+import Check from "./assets/Icons/Check";
 
 const Subscribe: React.FC = () => {
   const form = useRef<any>();
+  const [submitted, setSubmitted] = useState<boolean>(false);
 
   const sendEmail = (e: any) => {
     e.preventDefault();
-    window.alert("hello");
 
     emailjs
       .sendForm(
@@ -17,7 +18,7 @@ const Subscribe: React.FC = () => {
       )
       .then(
         (result: any) => {
-          console.log(result.text);
+          if ((result.status = 200)) setSubmitted(true);
         },
         (error: any) => {
           console.log(error.text);
@@ -41,11 +42,12 @@ const Subscribe: React.FC = () => {
         </div>
         <div className="flex lg:w-2/3 w-full sm:flex-row flex-col mx-auto px-8 sm:space-x-4 sm:space-y-0 space-y-4 sm:px-0 items-end">
           <form
+            id="myForm"
             ref={form}
             // onSubmit={sendEmail}
-            className="relative flex w-full"
+            className="relative flex-col w-full md:flex md:flex-row items-end"
           >
-            <div className="flex-col flex-grow mx-2">
+            <div className="flex-col flex-grow  my-2 md:mx-2 md:my-0">
               <label htmlFor="name" className="leading-7 text-sm text-gray-600">
                 Name
               </label>
@@ -59,7 +61,7 @@ const Subscribe: React.FC = () => {
               />
             </div>
 
-            <div className="flex-col flex-grow mx-2">
+            <div className="flex-col flex-grow  my-4 md:mx-2 md:my-0">
               <label
                 htmlFor="email"
                 className="leading-7 text-sm text-gray-600"
@@ -75,14 +77,14 @@ const Subscribe: React.FC = () => {
                 className="w-full text-primary-dark rounded border border-primary-dark focus:border-primary-normal focus:bg-transparent focus:ring-2 text-base outline-none py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
               />
             </div>
+            <button
+              onClick={(e: any) => sendEmail(e)}
+              type="submit"
+              className="w-full  md:max-w-max text-white bg-primary-normal border-0 py-2 px-8 focus:outline-none  rounded text-lg active:scale-90"
+            >
+              {submitted ? <Check /> : "Sign up"}
+            </button>
           </form>
-          <button
-            onClick={(e: any) => sendEmail(e)}
-            type="submit"
-            className="w-full md:max-w-max text-white bg-primary-normal border-0 py-2 px-8 focus:outline-none  rounded text-lg active:scale-90"
-          >
-            Sign up
-          </button>
         </div>
       </div>
     </section>
